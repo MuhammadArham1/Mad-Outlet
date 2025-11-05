@@ -5,3 +5,59 @@
 * Template: clotya
 * Version: 1.4.5
 */
+/* Wishlist Styling */
+.wishlist-btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.wishlist-btn:hover {
+    background-color: #333;
+}
+
+.wishlist-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.wishlist-item {
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    width: 220px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.wishlist-thumb img {
+    border-radius: 6px;
+}
+
+.wishlist-title {
+    font-size: 15px;
+    margin: 10px 0 5px;
+    color: #222;
+    font-weight: 500;
+}
+
+.wishlist-price {
+    color: #777;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.wishlist-empty {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    margin: 40px 0;
+}

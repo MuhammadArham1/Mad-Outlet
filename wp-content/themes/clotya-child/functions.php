@@ -45,3 +45,138 @@ function clotya_christmas_mode() {
     wp_enqueue_script('christmas-snow', get_stylesheet_directory_uri() . '/snow.js', array(), '1.0', true);
 }
 
+
+
+
+
+
+// === Wishlist Feature (Final & Fixed Version) ===
+
+// Add wishlist button on product loop and single product pages
+add_action('woocommerce_after_shop_loop_item', 'custom_add_wishlist_button', 15);
+add_action('woocommerce_single_product_summary', 'custom_add_wishlist_button', 35);
+
+function custom_add_wishlist_button() {
+    if (!function_exists('is_product')) {
+        return;
+    }
+
+    global $product;
+    if (!$product) return;
+
+    $product_id = $product->get_id();
+
+    // Get wishlist from cookie
+    $wishlist = isset($_COOKIE['wishlist']) ? json_decode(stripslashes($_COOKIE['wishlist']), true) : [];
+    if (!is_array($wishlist)) {
+        $wishlist = [];
+    }
+
+    $is_added = in_array($product_id, $wishlist);
+    ?>
+    <button type="button" class="wishlist-btn" data-product-id="<?php echo esc_attr($product_id); ?>">
+        <?php echo esc_html($is_added ? 'Remove from Wishlist' : 'Add to Wishlist'); ?>
+    </button>
+    <?php
+}
+
+// Handle AJAX for add/remove wishlist
+add_action('wp_ajax_toggle_wishlist', 'custom_toggle_wishlist');
+add_action('wp_ajax_nopriv_toggle_wishlist', 'custom_toggle_wishlist');
+
+function custom_toggle_wishlist() {
+    if (!isset($_POST['product_id'])) {
+        wp_send_json_error(['message' => 'Invalid request']);
+    }
+
+    $product_id = intval($_POST['product_id']);
+    $wishlist = isset($_COOKIE['wishlist']) ? json_decode(stripslashes($_COOKIE['wishlist']), true) : [];
+
+    if (!is_array($wishlist)) {
+        $wishlist = [];
+    }
+
+    if (in_array($product_id, $wishlist)) {
+        $wishlist = array_diff($wishlist, [$product_id]);
+        $message = 'removed';
+    } else {
+        $wishlist[] = $product_id;
+        $message = 'added';
+    }
+
+    // Reset array keys and update cookie
+    $wishlist = array_values($wishlist);
+    setcookie('wishlist', json_encode($wishlist), time() + (86400 * 30), '/');
+    $_COOKIE['wishlist'] = json_encode($wishlist); // update instantly
+
+    wp_send_json_success(['message' => $message]);
+}
+
+// Wishlist Page Shortcode
+add_shortcode('wishlist_page', 'custom_wishlist_page');
+function custom_wishlist_page() {
+    $wishlist = isset($_COOKIE['wishlist']) ? json_decode(stripslashes($_COOKIE['wishlist']), true) : [];
+
+    // If wishlist empty
+    if (empty($wishlist) || !is_array($wishlist)) {
+        return '<p class="wishlist-empty">Your wishlist is currently empty.</p>';
+    }
+
+    // Fetch wishlist products
+    $args = [
+        'post_type' => 'product',
+        'post__in' => $wishlist,
+        'posts_per_page' => -1,
+    ];
+    $query = new WP_Query($args);
+
+    ob_start();
+    echo '<div class="wishlist-products">';
+
+    while ($query->have_posts()) {
+        $query->the_post();
+        global $product;
+        if (!$product) continue;
+        ?>
+        <div class="wishlist-item">
+            <a href="<?php the_permalink(); ?>" class="wishlist-thumb"><?php the_post_thumbnail('medium'); ?></a>
+            <h2 class="wishlist-title"><?php the_title(); ?></h2>
+            <p class="wishlist-price"><?php echo wp_kses_post($product->get_price_html()); ?></p>
+            <button type="button" class="wishlist-btn" data-product-id="<?php echo esc_attr($product->get_id()); ?>">
+                Remove from Wishlist
+            </button>
+        </div>
+        <?php
+    }
+
+    echo '</div>';
+    wp_reset_postdata();
+
+    return ob_get_clean();
+}
+
+// Enqueue wishlist JS
+add_action('wp_enqueue_scripts', 'wishlist_scripts');
+function wishlist_scripts() {
+    wp_enqueue_script('wishlist-js', get_stylesheet_directory_uri() . '/wishlist.js', ['jquery'], null, true);
+    wp_localize_script('wishlist-js', 'wishlist_ajax', [
+        'url' => admin_url('admin-ajax.php'),
+    ]);
+}
+
+// Update wishlist link in header/footer to point correctly
+function arham_update_wishlist_link_in_header() {
+    ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const wishlistBtn = document.querySelector('.wishlist-button');
+        if (wishlistBtn) {
+            wishlistBtn.setAttribute('href', '<?php echo esc_url(home_url('/wishlist')); ?>');
+        }
+    });
+    </script>
+    <?php
+}
+add_action('wp_footer', 'arham_update_wishlist_link_in_header');
+
+// === End Wishlist Feature ===
