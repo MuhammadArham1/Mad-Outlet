@@ -1,0 +1,257 @@
+# Translation of Plugins - All-in-One WP Migration and Backup - Stable (latest release) in Croatian
+# This file is distributed under the same license as the Plugins - All-in-One WP Migration and Backup - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-01-27 13:00:10+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: hr\n"
+"Project-Id-Version: Plugins - All-in-One WP Migration and Backup - Stable (latest release)\n"
+
+#: lib/view/main/translate.php:33
+msgid "Translate"
+msgstr "Prevedi"
+
+#: lib/controller/class-ai1wm-main-controller.php:845
+msgid "I have enough disk space"
+msgstr "Imam dovoljno prostora na disku"
+
+#: lib/view/backups/backups-list.php:48 lib/view/backups/index.php:51
+msgid "Refreshing backup list..."
+msgstr "Osvježavanje liste sigurnosnih kopija..."
+
+#: lib/view/import/button-file.php:33
+msgid "To choose a file please go inside the link and click on the browse button."
+msgstr "Kako bi odabrali datoteku otvorite poveznicu i kliknite na dugme Pregled."
+
+#: lib/controller/class-ai1wm-main-controller.php:843
+msgid "Finish"
+msgstr "Završi"
+
+#: lib/view/import/import-buttons.php:41
+msgid "Drag & Drop a backup to import it"
+msgstr "Dovucite i ispustite sigurnosnu kopiju kako bi ju uvezli."
+
+#: lib/controller/class-ai1wm-main-controller.php:251
+msgid "All-in-One WP Migration Command"
+msgstr "All-in-One WP Migration Command"
+
+#: lib/controller/class-ai1wm-main-controller.php:816
+#: lib/model/export/class-ai1wm-export-init.php:47
+msgid "Preparing to export..."
+msgstr "Pripremanje izvoza&hellip;"
+
+#. translators: Human time diff
+#: lib/view/backups/backups-list.php:84
+msgid "%s ago"
+msgstr "prije %s"
+
+#: lib/controller/class-ai1wm-main-controller.php:847
+msgid "Please do not close this browser window or your import will fail"
+msgstr "Ne zatvarajte ovaj prozor, inače uvoz neće uspjeti."
+
+#: lib/controller/class-ai1wm-main-controller.php:846
+msgid "Continue"
+msgstr "Nastavi"
+
+#: lib/controller/class-ai1wm-main-controller.php:844
+msgid "Proceed"
+msgstr "Nastavi"
+
+#: lib/controller/class-ai1wm-main-controller.php:842
+msgid "Stop import"
+msgstr "Zaustavi uvoz"
+
+#: lib/controller/class-ai1wm-main-controller.php:823
+msgid "Stop export"
+msgstr "Zaustavi izvoz"
+
+#: lib/controller/class-ai1wm-main-controller.php:822
+#: lib/controller/class-ai1wm-main-controller.php:841
+msgid "Close"
+msgstr "Zatvori"
+
+#. translators: Progress.
+#: lib/model/import/class-ai1wm-import-validate.php:90
+#: lib/model/import/class-ai1wm-import-validate.php:162
+msgid "Unpacking archive...<br />%d%% complete"
+msgstr "Raspakiravanje arhive...<br />%d%% dovršeno"
+
+#. translators: Progress.
+#: lib/model/export/class-ai1wm-export-database-file.php:69
+#: lib/model/export/class-ai1wm-export-database-file.php:105
+msgid "Archiving database...<br />%d%% complete"
+msgstr "Arhiviranje baze podataka...<br />%d%% dovršeno"
+
+#. translators: Progress.
+#: lib/model/import/class-ai1wm-import-database.php:81
+#: lib/model/import/class-ai1wm-import-database.php:1037
+msgid "Restoring database...<br />%d%% complete"
+msgstr "Vraćanje baze podataka...<br />%d%% dovršeno"
+
+#: lib/controller/class-ai1wm-main-controller.php:1346
+msgid "Monthly"
+msgstr "Mjesečno"
+
+#: lib/controller/class-ai1wm-main-controller.php:1342
+msgid "Weekly"
+msgstr "Tjedno"
+
+#: lib/controller/class-ai1wm-main-controller.php:833
+msgid "Preparing to import..."
+msgstr "Pripremanje za izvoz&hellip;"
+
+#: lib/model/import/class-ai1wm-import-mu-plugins.php:37
+msgid "Activating mu-plugins..."
+msgstr "Aktiviranje obaveznih dodataka..."
+
+#: lib/model/import/class-ai1wm-import-blogs.php:37
+msgid "Preparing blogs..."
+msgstr "Pripremanje blogova&hellip;"
+
+#: lib/controller/class-ai1wm-main-controller.php:811
+#: lib/view/updater/check.php:33
+msgid "Check for updates"
+msgstr "Provjeri ažuriranja"
+
+#: lib/controller/class-ai1wm-main-controller.php:709
+#: lib/controller/class-ai1wm-main-controller.php:710
+msgid "Import"
+msgstr "Uvezi"
+
+#: lib/controller/class-ai1wm-main-controller.php:700
+#: lib/controller/class-ai1wm-main-controller.php:701
+msgid "Export"
+msgstr "Izvoz"
+
+#: lib/view/common/leave-feedback.php:69
+msgid "Cancel"
+msgstr "Prekini"
+
+#: lib/view/backups/backups-list.php:40
+msgid "Size"
+msgstr "Veličina"
+
+#: lib/view/backups/backups-list.php:109 lib/view/backups/backups-list.php:111
+#: lib/view/backups/backups-list.php:114 lib/view/backups/backups-list.php:116
+#: lib/view/backups/backups-list.php:124
+msgid "Download"
+msgstr "Preuzimanje"
+
+#: lib/view/backups/backups-list.php:39
+msgid "Date"
+msgstr "Datum"
+
+#: lib/controller/class-ai1wm-main-controller.php:718
+#: lib/controller/class-ai1wm-main-controller.php:719
+#: lib/view/backups/index.php:39
+msgid "Backups"
+msgstr "Sigurnosne kopije"
+
+#: lib/view/backups/backups-list.php:136 lib/view/backups/backups-list.php:138
+msgid "Delete"
+msgstr "Izbriši"
+
+#: lib/view/backups/backups-list.php:101 lib/view/backups/backups-list.php:103
+msgid "Restore"
+msgstr "Vrati"
+
+#. Author of the plugin
+#: all-in-one-wp-migration.php
+msgid "ServMask"
+msgstr "ServMask"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: all-in-one-wp-migration.php
+msgid "https://servmask.com/"
+msgstr "https://servmask.com/"
+
+#: lib/view/import/index.php:39
+msgid "Import Site"
+msgstr "Uvezi web-stranicu"
+
+#: lib/view/import/import-buttons.php:45
+msgid "Import From"
+msgstr "Forma uvoza"
+
+#: lib/view/export/index.php:39
+msgid "Export Site"
+msgstr "Izvoz web-stranice"
+
+#: lib/view/export/help-section.php:52
+msgid "Once the file is successfully downloaded on your computer, you can import it to any of your WordPress sites."
+msgstr "Nakon što ste uspješno preuzeli datoteku, možete uvesti na bilo koju WordPress web-stranicu."
+
+#: lib/view/export/help-section.php:48
+msgid "Press \"Export\" button and the site archive file will pop up in your browser."
+msgstr "Kliknite dugme \"Izvoz\"i arhiva web-stranice pojaviti će se u vašem pregledniku."
+
+#: lib/view/export/help-section.php:44
+msgid "In the advanced settings section you can configure more precisely the way of exporting."
+msgstr "U sekciji naprednih postavki možete preciznije konfigurirati način izvoza."
+
+#: lib/view/export/find-replace.php:54
+msgid "Add"
+msgstr "Dodaj"
+
+#: lib/view/export/find-replace.php:41
+msgid "in the database"
+msgstr "U bazi podataka"
+
+#: lib/view/export/find-replace.php:39 lib/view/export/find-replace.php:47
+msgid "Replace with"
+msgstr "Zamjeni s"
+
+#: lib/view/export/find-replace.php:38
+msgid "<text>"
+msgstr "<text>"
+
+#: lib/view/export/find-replace.php:40
+msgid "<another-text>"
+msgstr "<another-text>"
+
+#: lib/view/export/button-file.php:33 lib/view/import/button-file.php:34
+msgid "File"
+msgstr "Datoteka"
+
+#: lib/view/export/advanced-settings.php:38
+msgid "(click to expand)"
+msgstr "(klikni za proširiti)"
+
+#: lib/view/export/advanced-settings.php:37
+msgid "Advanced options"
+msgstr "Napredne opcije"
+
+#: lib/view/common/share-buttons.php:73
+msgid "Tweet"
+msgstr "Tweet"
+
+#: lib/view/common/leave-feedback.php:72
+msgid "Send"
+msgstr "Pošalji"
+
+#: lib/view/common/sidebar-right.php:41
+msgid "Leave Feedback"
+msgstr "Ostavi povratnu informaciju"
+
+#: lib/view/backups/index.php:59
+msgid "Create backup"
+msgstr "Kreiraj sigurnosnu kopiju"
+
+#: lib/view/backups/backups-list.php:38
+msgid "Name"
+msgstr "Ime"
+
+#: lib/view/main/multisite-notice.php:43
+msgid "Get multisite"
+msgstr "Nabavite multisite"
+
+#: lib/model/import/class-ai1wm-import-done.php:365
+#: lib/model/import/class-ai1wm-import-done.php:367
+#: lib/model/import/class-ai1wm-import-done.php:369
+msgid "Your site has been imported successfully!"
+msgstr "Vaši podaci su uspješno uvezeni!"
