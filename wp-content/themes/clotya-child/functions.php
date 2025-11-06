@@ -42,7 +42,6 @@ add_action('wp_enqueue_scripts', 'clotya_christmas_mode');
 function clotya_christmas_mode() {
     // Load extra Christmas CSS + JS
     wp_enqueue_style('christmas-style', get_stylesheet_directory_uri() . '/christmas.css', array(), '1.0');
-    wp_enqueue_script('christmas-snow', get_stylesheet_directory_uri() . '/snow.js', array(), '1.0', true);
 }
 
 
