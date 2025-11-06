@@ -254,28 +254,46 @@ if ( ! class_exists( 'KlbWishlist' ) ) {
 				}
 			}
 
-			$share_url_raw = self::get_url( $key, true );
-			$share_url     = urlencode( $share_url_raw );
-			$return_html   = '<div class="klbwl-list woocommerce-cart-form">';
-			$return_html   .= self::get_items( $key, 'table' );
-			$return_html   .= '<div class="klbwl-actions">';
+			$share_url_raw = self::get_url($key, true);
 
-			$return_html .= '<div class="footer-social">';
-			$return_html .= '<div class="site-social">';
-			$return_html .= '<div class="social-label">'.esc_html__('Share on:', 'clotya-core').'</div>';
-			$return_html .= '<ul class="color-theme rounded-style">';
-			$return_html .= '<li><a href="https://www.facebook.com/sharer.php?u=' . $share_url . '" class="facebook"><i class="klbth-icon-facebook"></i></a></li>';
-			$return_html .= '<li><a href="https://twitter.com/share?url=' . $share_url . '" class="instagram"><i class="klbth-icon-twitter"></i></a></li>';
-			$return_html .= '<li><a href="https://pinterest.com/pin/create/button/?url=' . $share_url . '" class="pinterest"><i class="klbth-icon-pinterest"></i></a></li>';
-			$return_html .= '<li><a href="mailto:?body=' . $share_url . '" class="envelope"><i class="klbth-icon-mail"></i></a></li>';
-			$return_html .= '</ul>';
-			$return_html .= '</div>';
-			$return_html .= '</div>';
+// Fallback: if self::get_url() doesn’t return a valid URL, use current page URL dynamically
+if (empty($share_url_raw)) {
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
+    $share_url_raw = $protocol . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+}
 
-			$return_html .= '</div><!-- /klbwl-actions -->';
-			$return_html .= '</div><!-- /klbwl-list -->';
+$share_url = urlencode($share_url_raw);
 
-			return $return_html;
+$return_html  = '<div class="klbwl-list woocommerce-cart-form">';
+$return_html .= self::get_items($key, 'table');
+$return_html .= '<div class="klbwl-actions">';
+
+$return_html .= '<div class="footer-social">';
+$return_html .= '<div class="site-social">';
+$return_html .= '<div class="social-label">' . esc_html__('Share on:', 'clotya-core') . '</div>';
+$return_html .= '<ul class="color-theme rounded-style">';
+
+// ✅ Facebook share
+$return_html .= '<li><a href="https://www.facebook.com/sharer/sharer.php?u=' . $share_url . '" target="_blank" rel="noopener noreferrer" class="facebook"><i class="klbth-icon-facebook"></i></a></li>';
+
+// ✅ Twitter share (fixed endpoint)
+$return_html .= '<li><a href="https://twitter.com/intent/tweet?url=' . $share_url . '" target="_blank" rel="noopener noreferrer" class="twitter"><i class="klbth-icon-twitter"></i></a></li>';
+
+// ✅ Pinterest share
+$return_html .= '<li><a href="https://pinterest.com/pin/create/button/?url=' . $share_url . '" target="_blank" rel="noopener noreferrer" class="pinterest"><i class="klbth-icon-pinterest"></i></a></li>';
+
+// ✅ Email share (encoded subject + body)
+$return_html .= '<li><a href="mailto:?subject=' . rawurlencode(__('Check this out', 'clotya-core')) . '&body=' . $share_url . '" class="envelope"><i class="klbth-icon-mail"></i></a></li>';
+
+$return_html .= '</ul>';
+$return_html .= '</div>'; // .site-social
+$return_html .= '</div>'; // .footer-social
+
+$return_html .= '</div><!-- /klbwl-actions -->';
+$return_html .= '</div><!-- /klbwl-list -->';
+
+return $return_html;
+
 		}
 
 
@@ -462,7 +480,7 @@ if ( ! class_exists( 'KlbWishlist' ) ) {
 				<div class="klbwl-popup-content">
 					<div class="klbwl-notice"></div>
 					
-					<a class="btn primary klbwl-page" href="<?php echo esc_url( self::get_url( $key, true ) ); ?>">
+					<a class="btn primary klbwl-page" href="<?php echo esc_url( home_url('/wishlist/') ); ?>">
 						<i class="klbth-icon-heart-empty"></i> <?php echo esc_html__( 'View Wishlist', 'clotya-core' ); ?>
 					</a>
 					<a class="btn primary klbwl-popup-close" href="#" data-url="#">
