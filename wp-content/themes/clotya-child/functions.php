@@ -29,14 +29,6 @@ add_action(  'wp_enqueue_scripts', 'clotya_child_enqueue_styles', 99 );
 
 
 
-
-
-
-
-
-
-
-
 // 🎅 Enable Christmas Mode (temporary)
 add_action('wp_enqueue_scripts', 'clotya_christmas_mode');
 function clotya_christmas_mode() {
@@ -44,6 +36,18 @@ function clotya_christmas_mode() {
     wp_enqueue_style('christmas-style', get_stylesheet_directory_uri() . '/christmas.css', array(), '1.0');
 }
 
+// Add snowflake effect site-wide (no plugin)
+function add_snow_effect_files() {
+    // Enqueue CSS
+    wp_enqueue_style('snow-style', get_stylesheet_directory_uri() . '/snow.css', array(), null);
+
+    // Enqueue JS (footer mein load)
+    wp_enqueue_script('snow-script', get_stylesheet_directory_uri() . '/snow.js', array(), null, true);
+}
+add_action('wp_enqueue_scripts', 'add_snow_effect_files');
+
+
+//Christmas end 🎅
 
 // Update wishlist link in header/footer to point correctly
 function arham_update_wishlist_link_in_header() {
@@ -69,3 +73,20 @@ function fix_clotya_wishlist_page() {
     }
 }
 add_action('after_setup_theme', 'fix_clotya_wishlist_page');
+
+
+
+// === Force show username field on WooCommerce registration form ===
+add_filter( 'woocommerce_registration_generate_username', '__return_false' );
+
+// === Ensure WooCommerce registration form includes username field ===
+add_filter( 'woocommerce_register_form_start', function() {
+    ?>
+    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+        <label for="reg_username"><?php esc_html_e( 'Username', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+        <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="reg_username" autocomplete="username" value="<?php echo (!empty($_POST['username']) ? esc_attr(wp_unslash($_POST['username'])) : ''); ?>" required />
+    </p>
+    <?php
+});
+
+
