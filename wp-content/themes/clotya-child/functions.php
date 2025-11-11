@@ -88,5 +88,3 @@ add_filter( 'woocommerce_register_form_start', function() {
     </p>
     <?php
 });
-
-
