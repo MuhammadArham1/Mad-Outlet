@@ -35,11 +35,11 @@ CacheKeyModify -qs:_ga
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RewriteBase /Mad-Outlet/
+RewriteBase /MadOutlet/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /Mad-Outlet/index.php [L]
+RewriteRule . /MadOutlet/index.php [L]
 </IfModule>
 
 # END WordPress

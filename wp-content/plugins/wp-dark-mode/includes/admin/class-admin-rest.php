@@ -173,6 +173,8 @@ if ( ! class_exists( __NAMESPACE__ . 'REST' ) ) {
 
 			foreach ( $option_keys as $key => $value ) {
 				if ( $request->has_param( $key ) ) {
+
+					$option_value = $request->get_param( $key );
 					$this->set_option( $key, $request->get_param( $key ), true );
 					$updates[ $key ] = $request->get_param( $key );
 				}
@@ -262,7 +264,7 @@ if ( ! class_exists( __NAMESPACE__ . 'REST' ) ) {
 		 * @since 5.0.0
 		 */
 		public function get_visitors( $request ) {
-			// Check if premium and analytics are enabled
+			// Check if premium and analytics are enabled.
 			if ( ! \wp_validate_boolean( get_option( 'wp_dark_mode_analytics_enabled' ) ) ) {
 				return rest_ensure_response( [] );
 			}
@@ -270,7 +272,7 @@ if ( ! class_exists( __NAMESPACE__ . 'REST' ) ) {
 			$visitor = new \WP_Dark_Mode\Model\Visitor();
 			$visitors = $visitor->get_all();
 
-			// Send response
+			// Send response.
 			return rest_ensure_response( $visitors );
 		}
 
@@ -335,6 +337,12 @@ if ( ! class_exists( __NAMESPACE__ . 'REST' ) ) {
 				"SELECT `ID`, `post_title` as `title`, `post_type` as `type` FROM {$wpdb->posts} WHERE post_type IN ('post', 'page') AND post_status = %s",
 				'publish'
 			) );
+
+			$posts[] = array(
+				'ID'    => -1,
+				'title' => 'Login / Registration Page',
+				'type'  => 'core',
+			);
 
 			return $posts;
 		}

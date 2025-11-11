@@ -34,6 +34,7 @@ if ( ! class_exists( __NAMESPACE__ . 'Assets' ) ) {
 		 */
 		public function actions() {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 0 );
+			add_action( 'login_enqueue_scripts', array( $this, 'enqueue_scripts' ), 0 );
 
 			// Modify script async.
 			add_filter( 'script_loader_tag', array( $this, 'script_loader_tag' ), 10, 2 );

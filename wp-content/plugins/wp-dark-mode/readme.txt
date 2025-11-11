@@ -1,18 +1,18 @@
-=== WP Dark Mode - Dark Mode Plugin for Improved Accessibility, Dark Theme, Night Mode, and Social Sharing ===
-Contributors: wppool, wpdarkmode, azizultex, iamjafran
-Tags: dark, dark mode, night mode, dark theme, accessibility
+=== Dark Mode Plugin for Better Accessibility, Dark Theme and Night Mode - WP Dark Mode ===
+Contributors: wppool, wpdarkmode, azizultex, iamjafran, shahreyar46
+Tags: dark mode, dark, night mode, dark theme, accessibility
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 5.2.15
+Stable tag: 5.2.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The best dark mode plugin for WordPress with the best features - dark mode toggle, dashboard dark mode, accessibility, with zero coding required!
+Enable dark mode on WordPress without any coding. Improve site accessibility with a stunning dark theme that improves conversion.
 
 == Description ==
 
-= CREATE A STUNNING DARK MODE VERSION OF YOUR WEBSITE ✨ =
+**CREATE A STUNNING DARK MODE VERSION OF YOUR WEBSITE ✨**
 
 WP Dark Mode instantly creates a dark mode version of your website without any complicated setup. Activate the plugin and your site visitors will experience a dark mode version of your website as per their preferred operating system preference. This is the easiest and highest-rated dark mode plugin for WordPress on the repository.
 
@@ -49,6 +49,7 @@ Check what popular WordPress expert Matt (WPress Doctor) thinks about WP Dark Mo
 * **Exclude WP Dark Mode from Caching** - Enable this feature to exclude WP Dark Mode from server-side caching and ensure a seamless dark mode transition.
 * **Device-wise Dark Mode Toggle** - Easily choose where to display the dark mode switch: Desktop, Mobile, or Tablet.
 * **Dark Mode Analytics** - Track how many times site visitors have used dark mode in a certain period from the analytics menu and your WordPress Admin Dashboard.
+* **Custom CSS Support** – With custom CSS you unleash the perfect dark mode version of your website. Customize specific sections/elements exactly how you want in dark mode.
 
 👁️ [View Demo](https://go.wppool.dev/fuUK) | 🚀  [Get Ultimate](https://wppool.dev/wp-dark-mode-pricing/?utm_source=readme&utm_medium=org_readme&utm_campaign=wp-dark-mode) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
 
@@ -64,7 +65,6 @@ Check what popular WordPress expert Matt (WPress Doctor) thinks about WP Dark Mo
 * **Preset Color Customization** - Tailor your dark mode experience to perfection. Choose a preset and customize the color of every element, starting from the body and text to links, input fields, buttons, and even the scrollbar—exactly the way you want.
 * **Create Custom Color Preset** - Unleash your inner Picasso by creating and customizing your color presets. Dive into a palette of possibilities, shaping colors for every element – from the body to text and scrollbar.
 * **Automatic Dark Mode Based on Sunset** - Automatically enable dark mode based on your visitor's time.
-* **Custom CSS Support** – With custom CSS you unleash the perfect dark mode version of your website. Customize specific sections/elements exactly how you want in dark mode.
 * **Multiple Switch Options** - Toggle between different dark mode switch options. Whether you need a menu switch, a floating switch, or a content switch for your posts/page, the power is on your end. Get a distinct switch style for every section.
 * **Custom Switch Support with Call-to-Action Customization** – Upload a custom switch of your own choice and customize call-to-action text on your dark mode switch.
 * **Dark Mode-Based Image Replacement** – Replace light-mode images with the different images you want in the dark mode. 
@@ -86,16 +86,14 @@ Check what popular WordPress expert Matt (WPress Doctor) thinks about WP Dark Mo
 
 ### 😍 WHAT OUR CUSTOMERS SAY ABOUT WP DARK MODE!
 
-> ⭐⭐⭐⭐⭐
-[` 💙 Best dark mode plugin currently available!`](https://wordpress.org/support/topic/best-dark-mode-plugin-currently-available/)
-
-> *I’ve always been a busy fan of dark mode and have tried diff plugins over the years including WP Dark Mode, Darklups, Dracula Dark Mode, DarkMySite, Darklooks, Darkify, Dusky Dark Mode, and bla blah. I started using WP Dark Mode back in 2021 and really loved how it worked on my site. I even tried custom code snippets – it was really fun!
+>[` 💙 Best dark mode plugin currently available!`](https://wordpress.org/support/topic/best-dark-mode-plugin-currently-available/)
+>*I’ve always been a busy fan of dark mode and have tried diff plugins over the years including WP Dark Mode, Darklups, Dracula Dark Mode, DarkMySite, Darklooks, Darkify, Dusky Dark Mode, and bla blah. I started using WP Dark Mode back in 2021 and really loved how it worked on my site. I even tried custom code snippets – it was really fun!
 But in mid 2023, I switched to Dracula because of its color compatibility. However, after WP Dark Mode’s recent updates and revamp, I decided to give it another try – and I’ve fallen in love with it all over again! The latest version really takes things up a notch and works perfectly with my site. Good work WP Dark Mode team.*
-**- by @sharukhrakin**
+- by @sharukhrakin
 
 == 🤔 Why Choose WP Dark Mode? ==
 
-WP Dark Mode is the **#1 WordPress Dark Mode Plugin** trusted by **200,000+ websites** worldwide. It instantly adds a dark theme toggle for both frontend and WordPress admin, improving **accessibility, user experience, and SEO performance.**
+WP Dark Mode is the **#1 WordPress Dark Mode Plugin** trusted by **20,000+ websites** worldwide. It instantly adds a dark theme toggle for both frontend and WordPress admin, improving **accessibility, user experience, and SEO performance.**
 
 Recent research shows:
 
@@ -262,10 +260,16 @@ Yes, You can toggle the dark mode/ light mode by keyboard shortcut `(Ctrl + Alt 
 
 == Changelog ==
 
+= 5.2.16 – 10 NOV 2025 =
+* **New:** Introduced dark mode support for WordPress login, registration, and password reset pages, with the ability to inherit the site's front-end dark mode settings (Default, OS-based, Time-based, Sunset).
+* **New:** Added an option to exclude the login and registration pages from dark mode using the Exclude feature.
+* **New:** Implemented a setting to control the visibility of the floating dark mode switch on the login and registration pages.
+* **Improvement:** Enhanced compatibility with login customizer plugins (LoginPress, Theme My Login) and security plugins that modify the login URL.
+
 = 5.2.15 – 30 OCT 2025 =
 * **Improvement:** Improved the custom CSS flow for FREE users.
 
-= 5.2.14 – 05 OCT 2025 =
+= 5.2.14 – 8 SEP 2025 =
 * **New:** Introduced New ‘Sky’ Switch for nature lovers.
 * **Fix:** Dark Mode images inside closed Elementor Toggle not switching.
 * **Fix:** The “Liquid Glass” switch is not available for Menu Switch.

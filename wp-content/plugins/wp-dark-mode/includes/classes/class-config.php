@@ -146,6 +146,10 @@ if ( ! class_exists( __NAMESPACE__ . 'Config' ) ) {
 						'type' => 'number',
 						'default' => 5,
 					),
+					'enabled_login_pages' => array(
+						'type' => 'boolean',
+						'default' => false,
+					),
 					'style' => array(
 						'type' => 'number',
 						'default' => 1,

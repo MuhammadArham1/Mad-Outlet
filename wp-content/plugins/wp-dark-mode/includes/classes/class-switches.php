@@ -35,6 +35,7 @@ if ( ! class_exists( __NAMESPACE__ . 'Switches' ) ) {
 		public function actions() {
 			// Add a template in the footer.
 			add_action( 'wp_footer', array( $this, 'load_floating_switch' ), 10 );
+			add_action( 'login_footer', array( $this, 'load_floating_switch' ), 10 );
 		}
 
 		/**
@@ -52,6 +53,10 @@ if ( ! class_exists( __NAMESPACE__ . 'Switches' ) ) {
 
 			// Bail, if floating switch is disabled.
 			if ( ! $this->get_option( 'floating_switch_enabled' ) ) {
+				return;
+			}
+
+			if ( $this->is_login_page() && ! $this->get_option( 'floating_switch_enabled_login_pages' ) ) {
 				return;
 			}
 
@@ -92,6 +97,22 @@ if ( ! class_exists( __NAMESPACE__ . 'Switches' ) ) {
 			}
 
 			$this->render_template( 'frontend/floating-switch', $args );
+		}
+
+		/**
+		 * Check if current page is a login/register page
+		 *
+		 * @return bool
+		 * @since 5.1.0
+		 */
+		private function is_login_page() {
+			global $pagenow;
+
+			// WordPress login page (all actions).
+			if ( 'wp-login.php' === $pagenow ) {
+				return true;
+			}
+			return false;
 		}
 	}
 
