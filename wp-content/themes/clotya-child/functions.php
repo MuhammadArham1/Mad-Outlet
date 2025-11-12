@@ -32,8 +32,22 @@ add_action(  'wp_enqueue_scripts', 'clotya_child_enqueue_styles', 99 );
 // 🎅 Enable Christmas Mode (temporary)
 add_action('wp_enqueue_scripts', 'clotya_christmas_mode');
 function clotya_christmas_mode() {
-    // Load extra Christmas CSS + JS
-    wp_enqueue_style('christmas-style', get_stylesheet_directory_uri() . '/christmas.css', array(), '1.0');
+    // Load extra Christmas CSS
+    wp_enqueue_style(
+        'christmas-style',
+        get_stylesheet_directory_uri() . '/christmas.css',
+        array(),
+        '1.0'
+    );
+
+    // Load extra Christmas JS
+    wp_enqueue_script(
+        'christmas-script',
+        get_stylesheet_directory_uri() . '/christmas.js',
+        array('jquery'), // dependency (optional)
+        '1.0',
+        true // load in footer
+    );
 }
 
 // Add snowflake effect site-wide (no plugin)
@@ -45,7 +59,6 @@ function add_snow_effect_files() {
     wp_enqueue_script('snow-script', get_stylesheet_directory_uri() . '/snow.js', array(), null, true);
 }
 add_action('wp_enqueue_scripts', 'add_snow_effect_files');
-
 
 //Christmas end 🎅
 

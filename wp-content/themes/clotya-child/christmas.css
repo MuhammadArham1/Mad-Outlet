@@ -1,8 +1,8 @@
 /* 🎄 Christmas Mode Styling */
 header, .site-header, .main-header {
-  background: linear-gradient(to right, #d32f2f, #388e3c);
+  background: linear-gradient(to right, #fc1c1c, #cc577e, #1d9e77);
 }
 
 footer, .site-footer {
-  background: linear-gradient(to right, #388e3c, #d32f2f);
+  background: linear-gradient(to right, #1d9e77, #cc577e, #fc1c1c);
 }
