@@ -53,33 +53,18 @@ class ProductImageGallery extends AbstractBlock {
 	 */
 	public function enqueue_legacy_assets() {
 		// Legacy script dependencies for backward compatibility.
-		$need_single_product_script = false;
+		wp_enqueue_script( 'wc-zoom' );
+		wp_enqueue_script( 'wc-flexslider' );
+		wp_enqueue_script( 'wc-photoswipe-ui-default' );
+		wp_enqueue_style( 'photoswipe-default-skin' );
+		wp_enqueue_script( 'wc-single-product' );
 
-		if ( current_theme_supports( 'wc-product-gallery-zoom' ) ) {
-			$need_single_product_script = true;
-			wp_enqueue_script( 'wc-zoom' );
-		}
-
-		if ( current_theme_supports( 'wc-product-gallery-slider' ) ) {
-			$need_single_product_script = true;
-			wp_enqueue_script( 'wc-flexslider' );
-		}
-
-		if ( current_theme_supports( 'wc-product-gallery-lightbox' ) ) {
-			$need_single_product_script = true;
-			wp_enqueue_script( 'wc-photoswipe-ui-default' );
-			wp_enqueue_style( 'photoswipe-default-skin' );
-			add_action(
-				'wp_footer',
-				function () {
-					wc_get_template( 'single-product/photoswipe.php' );
-				}
-			);
-		}
-
-		if ( $need_single_product_script ) {
-			wp_enqueue_script( 'wc-single-product' );
-		}
+		add_action(
+			'wp_footer',
+			function () {
+				wc_get_template( 'single-product/photoswipe.php' );
+			}
+		);
 	}
 
 	/**

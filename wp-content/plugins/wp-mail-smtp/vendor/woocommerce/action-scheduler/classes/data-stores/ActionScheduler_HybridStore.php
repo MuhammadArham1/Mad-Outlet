@@ -432,7 +432,7 @@ class ActionScheduler_HybridStore extends Store {
 	}
 
 	/**
-	 * Release a claim in the table data store on any pending actions.
+	 * Release a claim in the table data store.
 	 *
 	 * @param ActionScheduler_ActionClaim $claim Claim object.
 	 */

@@ -28,7 +28,7 @@ interface UploadedFileInterface
      * @throws \RuntimeException in cases when no stream is available or can be
      *     created.
      */
-    public function getStream() : StreamInterface;
+    public function getStream() : \WPMailSMTP\Vendor\Psr\Http\Message\StreamInterface;
     /**
      * Move the uploaded file to a new location.
      *

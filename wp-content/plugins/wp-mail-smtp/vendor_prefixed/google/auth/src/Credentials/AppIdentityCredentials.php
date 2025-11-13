@@ -55,7 +55,7 @@ use WPMailSMTP\Vendor\Google\Auth\SignBlobInterface;
  * $res = $client->get('volumes?q=Henry+David+Thoreau&country=US');
  * ```
  */
-class AppIdentityCredentials extends CredentialsLoader implements SignBlobInterface, ProjectIdProviderInterface
+class AppIdentityCredentials extends \WPMailSMTP\Vendor\Google\Auth\CredentialsLoader implements \WPMailSMTP\Vendor\Google\Auth\SignBlobInterface, \WPMailSMTP\Vendor\Google\Auth\ProjectIdProviderInterface
 {
     /**
      * Result of fetchAuthToken.
@@ -122,7 +122,7 @@ class AppIdentityCredentials extends CredentialsLoader implements SignBlobInterf
             return [];
         }
         /** @phpstan-ignore-next-line */
-        $token = AppIdentityService::getAccessToken($this->scope);
+        $token = \WPMailSMTP\Vendor\google\appengine\api\app_identity\AppIdentityService::getAccessToken($this->scope);
         $this->lastReceivedToken = $token;
         return $token;
     }
@@ -139,7 +139,7 @@ class AppIdentityCredentials extends CredentialsLoader implements SignBlobInterf
     {
         $this->checkAppEngineContext();
         /** @phpstan-ignore-next-line */
-        return \base64_encode(AppIdentityService::signForApp($stringToSign)['signature']);
+        return \base64_encode(\WPMailSMTP\Vendor\google\appengine\api\app_identity\AppIdentityService::signForApp($stringToSign)['signature']);
     }
     /**
      * Get the project ID from AppIdentityService.
@@ -157,7 +157,7 @@ class AppIdentityCredentials extends CredentialsLoader implements SignBlobInterf
             return null;
         }
         /** @phpstan-ignore-next-line */
-        return AppIdentityService::getApplicationId();
+        return \WPMailSMTP\Vendor\google\appengine\api\app_identity\AppIdentityService::getApplicationId();
     }
     /**
      * Get the client name from AppIdentityService.
@@ -173,7 +173,7 @@ class AppIdentityCredentials extends CredentialsLoader implements SignBlobInterf
         $this->checkAppEngineContext();
         if (!$this->clientName) {
             /** @phpstan-ignore-next-line */
-            $this->clientName = AppIdentityService::getServiceAccountName();
+            $this->clientName = \WPMailSMTP\Vendor\google\appengine\api\app_identity\AppIdentityService::getServiceAccountName();
         }
         return $this->clientName;
     }

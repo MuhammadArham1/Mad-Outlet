@@ -50,7 +50,7 @@ abstract class RFC4648
         string $str
     ) : string
     {
-        return Base64::encode($str);
+        return \WPMailSMTP\Vendor\ParagonIE\ConstantTime\Base64::encode($str);
     }
     /**
      * RFC 4648 Base64 decoding
@@ -67,7 +67,7 @@ abstract class RFC4648
         string $str
     ) : string
     {
-        return Base64::decode($str, \true);
+        return \WPMailSMTP\Vendor\ParagonIE\ConstantTime\Base64::decode($str, \true);
     }
     /**
      * RFC 4648 Base64 (URL Safe) encoding
@@ -84,7 +84,7 @@ abstract class RFC4648
         string $str
     ) : string
     {
-        return Base64UrlSafe::encode($str);
+        return \WPMailSMTP\Vendor\ParagonIE\ConstantTime\Base64UrlSafe::encode($str);
     }
     /**
      * RFC 4648 Base64 (URL Safe) decoding
@@ -101,7 +101,7 @@ abstract class RFC4648
         string $str
     ) : string
     {
-        return Base64UrlSafe::decode($str, \true);
+        return \WPMailSMTP\Vendor\ParagonIE\ConstantTime\Base64UrlSafe::decode($str, \true);
     }
     /**
      * RFC 4648 Base32 encoding
@@ -118,7 +118,7 @@ abstract class RFC4648
         string $str
     ) : string
     {
-        return Base32::encodeUpper($str);
+        return \WPMailSMTP\Vendor\ParagonIE\ConstantTime\Base32::encodeUpper($str);
     }
     /**
      * RFC 4648 Base32 encoding
@@ -135,7 +135,7 @@ abstract class RFC4648
         string $str
     ) : string
     {
-        return Base32::decodeUpper($str, \true);
+        return \WPMailSMTP\Vendor\ParagonIE\ConstantTime\Base32::decodeUpper($str, \true);
     }
     /**
      * RFC 4648 Base32-Hex encoding
@@ -152,7 +152,7 @@ abstract class RFC4648
         string $str
     ) : string
     {
-        return Base32::encodeUpper($str);
+        return \WPMailSMTP\Vendor\ParagonIE\ConstantTime\Base32::encodeUpper($str);
     }
     /**
      * RFC 4648 Base32-Hex decoding
@@ -169,7 +169,7 @@ abstract class RFC4648
         string $str
     ) : string
     {
-        return Base32::decodeUpper($str, \true);
+        return \WPMailSMTP\Vendor\ParagonIE\ConstantTime\Base32::decodeUpper($str, \true);
     }
     /**
      * RFC 4648 Base16 decoding
@@ -186,7 +186,7 @@ abstract class RFC4648
         string $str
     ) : string
     {
-        return Hex::encodeUpper($str);
+        return \WPMailSMTP\Vendor\ParagonIE\ConstantTime\Hex::encodeUpper($str);
     }
     /**
      * RFC 4648 Base16 decoding
@@ -201,6 +201,6 @@ abstract class RFC4648
         string $str
     ) : string
     {
-        return Hex::decode($str, \true);
+        return \WPMailSMTP\Vendor\ParagonIE\ConstantTime\Hex::decode($str, \true);
     }
 }

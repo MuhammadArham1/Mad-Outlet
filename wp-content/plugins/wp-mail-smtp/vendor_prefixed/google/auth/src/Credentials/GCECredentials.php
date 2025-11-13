@@ -55,7 +55,7 @@ use InvalidArgumentException;
  *
  *   $res = $client->get('myproject/taskqueues/myqueue');
  */
-class GCECredentials extends CredentialsLoader implements SignBlobInterface, ProjectIdProviderInterface, GetQuotaProjectInterface
+class GCECredentials extends \WPMailSMTP\Vendor\Google\Auth\CredentialsLoader implements \WPMailSMTP\Vendor\Google\Auth\SignBlobInterface, \WPMailSMTP\Vendor\Google\Auth\ProjectIdProviderInterface, \WPMailSMTP\Vendor\Google\Auth\GetQuotaProjectInterface
 {
     use IamSignerTrait;
     // phpcs:disable
@@ -166,11 +166,11 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
      * @param string $universeDomain [optional] Specify a universe domain to use
      *   instead of fetching one from the metadata server.
      */
-    public function __construct(?Iam $iam = null, $scope = null, $targetAudience = null, $quotaProject = null, $serviceAccountIdentity = null, ?string $universeDomain = null)
+    public function __construct(?\WPMailSMTP\Vendor\Google\Auth\Iam $iam = null, $scope = null, $targetAudience = null, $quotaProject = null, $serviceAccountIdentity = null, ?string $universeDomain = null)
     {
         $this->iam = $iam;
         if ($scope && $targetAudience) {
-            throw new InvalidArgumentException('Scope and targetAudience cannot both be supplied');
+            throw new \InvalidArgumentException('Scope and targetAudience cannot both be supplied');
         }
         $tokenUri = self::getTokenUri($serviceAccountIdentity);
         if ($scope) {
@@ -277,7 +277,7 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
      */
     public static function onGce(?callable $httpHandler = null)
     {
-        $httpHandler = $httpHandler ?: HttpHandlerFactory::build(HttpClientCache::getHttpClient());
+        $httpHandler = $httpHandler ?: \WPMailSMTP\Vendor\Google\Auth\HttpHandler\HttpHandlerFactory::build(\WPMailSMTP\Vendor\Google\Auth\HttpHandler\HttpClientCache::getHttpClient());
         $checkUri = 'http://' . self::METADATA_IP;
         for ($i = 1; $i <= self::MAX_COMPUTE_PING_TRIES; $i++) {
             try {
@@ -289,12 +289,12 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
                 // could lead to false negatives in the event that we are on GCE, but
                 // the metadata resolution was particularly slow. The latter case is
                 // "unlikely".
-                $resp = $httpHandler(new Request('GET', $checkUri, [self::FLAVOR_HEADER => 'Google']), ['timeout' => self::COMPUTE_PING_CONNECTION_TIMEOUT_S]);
+                $resp = $httpHandler(new \WPMailSMTP\Vendor\GuzzleHttp\Psr7\Request('GET', $checkUri, [self::FLAVOR_HEADER => 'Google']), ['timeout' => self::COMPUTE_PING_CONNECTION_TIMEOUT_S]);
                 return $resp->getHeaderLine(self::FLAVOR_HEADER) == 'Google';
-            } catch (ClientException $e) {
-            } catch (ServerException $e) {
-            } catch (RequestException $e) {
-            } catch (ConnectException $e) {
+            } catch (\WPMailSMTP\Vendor\GuzzleHttp\Exception\ClientException $e) {
+            } catch (\WPMailSMTP\Vendor\GuzzleHttp\Exception\ServerException $e) {
+            } catch (\WPMailSMTP\Vendor\GuzzleHttp\Exception\RequestException $e) {
+            } catch (\WPMailSMTP\Vendor\GuzzleHttp\Exception\ConnectException $e) {
             }
         }
         if (\PHP_OS === 'Windows') {
@@ -332,7 +332,7 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
      */
     public function fetchAuthToken(?callable $httpHandler = null)
     {
-        $httpHandler = $httpHandler ?: HttpHandlerFactory::build(HttpClientCache::getHttpClient());
+        $httpHandler = $httpHandler ?: \WPMailSMTP\Vendor\Google\Auth\HttpHandler\HttpHandlerFactory::build(\WPMailSMTP\Vendor\Google\Auth\HttpHandler\HttpClientCache::getHttpClient());
         if (!$this->hasCheckedOnGce) {
             $this->isOnGce = self::onGce($httpHandler);
             $this->hasCheckedOnGce = \true;
@@ -386,7 +386,7 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
         if ($this->clientName) {
             return $this->clientName;
         }
-        $httpHandler = $httpHandler ?: HttpHandlerFactory::build(HttpClientCache::getHttpClient());
+        $httpHandler = $httpHandler ?: \WPMailSMTP\Vendor\Google\Auth\HttpHandler\HttpHandlerFactory::build(\WPMailSMTP\Vendor\Google\Auth\HttpHandler\HttpClientCache::getHttpClient());
         if (!$this->hasCheckedOnGce) {
             $this->isOnGce = self::onGce($httpHandler);
             $this->hasCheckedOnGce = \true;
@@ -410,7 +410,7 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
         if ($this->projectId) {
             return $this->projectId;
         }
-        $httpHandler = $httpHandler ?: HttpHandlerFactory::build(HttpClientCache::getHttpClient());
+        $httpHandler = $httpHandler ?: \WPMailSMTP\Vendor\Google\Auth\HttpHandler\HttpHandlerFactory::build(\WPMailSMTP\Vendor\Google\Auth\HttpHandler\HttpClientCache::getHttpClient());
         if (!$this->hasCheckedOnGce) {
             $this->isOnGce = self::onGce($httpHandler);
             $this->hasCheckedOnGce = \true;
@@ -432,14 +432,14 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
         if (null !== $this->universeDomain) {
             return $this->universeDomain;
         }
-        $httpHandler = $httpHandler ?: HttpHandlerFactory::build(HttpClientCache::getHttpClient());
+        $httpHandler = $httpHandler ?: \WPMailSMTP\Vendor\Google\Auth\HttpHandler\HttpHandlerFactory::build(\WPMailSMTP\Vendor\Google\Auth\HttpHandler\HttpClientCache::getHttpClient());
         if (!$this->hasCheckedOnGce) {
             $this->isOnGce = self::onGce($httpHandler);
             $this->hasCheckedOnGce = \true;
         }
         try {
             $this->universeDomain = $this->getFromMetadata($httpHandler, self::getUniverseDomainUri());
-        } catch (ClientException $e) {
+        } catch (\WPMailSMTP\Vendor\GuzzleHttp\Exception\ClientException $e) {
             // If the metadata server exists, but returns a 404 for the universe domain, the auth
             // libraries should safely assume this is an older metadata server running in GCU, and
             // should return the default universe domain.
@@ -464,7 +464,7 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
      */
     private function getFromMetadata(callable $httpHandler, $uri)
     {
-        $resp = $httpHandler(new Request('GET', $uri, [self::FLAVOR_HEADER => 'Google']));
+        $resp = $httpHandler(new \WPMailSMTP\Vendor\GuzzleHttp\Psr7\Request('GET', $uri, [self::FLAVOR_HEADER => 'Google']));
         return (string) $resp->getBody();
     }
     /**

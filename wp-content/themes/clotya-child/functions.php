@@ -101,7 +101,3 @@ add_filter( 'woocommerce_register_form_start', function() {
     </p>
     <?php
 });
-
-if ( function_exists( 'the_custom_logo' ) ) {
-    the_custom_logo(); // Outputs the logo set in Customizer
-}

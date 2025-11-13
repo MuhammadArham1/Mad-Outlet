@@ -19,9 +19,9 @@ namespace WPMailSMTP\Vendor\Google\Service\Gmail;
 
 class CsePrivateKeyMetadata extends \WPMailSMTP\Vendor\Google\Model
 {
-    protected $hardwareKeyMetadataType = HardwareKeyMetadata::class;
+    protected $hardwareKeyMetadataType = \WPMailSMTP\Vendor\Google\Service\Gmail\HardwareKeyMetadata::class;
     protected $hardwareKeyMetadataDataType = '';
-    protected $kaclsKeyMetadataType = KaclsKeyMetadata::class;
+    protected $kaclsKeyMetadataType = \WPMailSMTP\Vendor\Google\Service\Gmail\KaclsKeyMetadata::class;
     protected $kaclsKeyMetadataDataType = '';
     /**
      * @var string
@@ -30,7 +30,7 @@ class CsePrivateKeyMetadata extends \WPMailSMTP\Vendor\Google\Model
     /**
      * @param HardwareKeyMetadata
      */
-    public function setHardwareKeyMetadata(HardwareKeyMetadata $hardwareKeyMetadata)
+    public function setHardwareKeyMetadata(\WPMailSMTP\Vendor\Google\Service\Gmail\HardwareKeyMetadata $hardwareKeyMetadata)
     {
         $this->hardwareKeyMetadata = $hardwareKeyMetadata;
     }
@@ -44,7 +44,7 @@ class CsePrivateKeyMetadata extends \WPMailSMTP\Vendor\Google\Model
     /**
      * @param KaclsKeyMetadata
      */
-    public function setKaclsKeyMetadata(KaclsKeyMetadata $kaclsKeyMetadata)
+    public function setKaclsKeyMetadata(\WPMailSMTP\Vendor\Google\Service\Gmail\KaclsKeyMetadata $kaclsKeyMetadata)
     {
         $this->kaclsKeyMetadata = $kaclsKeyMetadata;
     }
@@ -71,4 +71,4 @@ class CsePrivateKeyMetadata extends \WPMailSMTP\Vendor\Google\Model
     }
 }
 // Adding a class alias for backwards compatibility with the previous class name.
-\class_alias(CsePrivateKeyMetadata::class, 'WPMailSMTP\\Vendor\\Google_Service_Gmail_CsePrivateKeyMetadata');
+\class_alias(\WPMailSMTP\Vendor\Google\Service\Gmail\CsePrivateKeyMetadata::class, 'WPMailSMTP\\Vendor\\Google_Service_Gmail_CsePrivateKeyMetadata');

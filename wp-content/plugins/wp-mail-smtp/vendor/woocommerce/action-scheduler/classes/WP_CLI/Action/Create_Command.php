@@ -2,8 +2,6 @@
 
 namespace Action_Scheduler\WP_CLI\Action;
 
-use function \WP_CLI\Utils\get_flag_value;
-
 /**
  * WP-CLI command: action-scheduler action create
  */

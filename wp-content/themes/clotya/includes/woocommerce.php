@@ -1325,7 +1325,7 @@ function clotya_header_product_search() {
 		$form .= do_shortcode('[wcas-search-form]');
 	} else {
 		$form .= '<form action="' . esc_url( home_url( '/'  ) ) . '" class="search-form search-item" role="search" method="get">';
-		$form .= '<input type="search" value="' . get_search_query() . '" name="s" class="form-control line" autocomplete="off" placeholder="'.esc_attr__('Search MadOutlet','clotya').'">';
+		$form .= '<input type="search" value="' . get_search_query() . '" name="s" class="form-control line" autocomplete="off" placeholder="'.esc_attr__('Search Madoutlet','clotya').'">';
 		$form .= '<select name="product_cat" id="categories">';
 		$form .= '<option class="select-value" value="" selected="selected">'.esc_html__('Select Category','clotya').'</option>';
 		foreach ( $terms as $term ) {
